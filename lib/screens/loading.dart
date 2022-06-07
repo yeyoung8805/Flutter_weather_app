@@ -13,6 +13,9 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
 
+  double? latitudePosition; //double? for null-safety (null aware operator)
+  double? longitudePosition;
+
   @override
   void initState() {
     super.initState();
@@ -25,7 +28,10 @@ class _LoadingState extends State<Loading> {
       LocationPermission permission = await Geolocator.requestPermission();
       Position position = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
-      print(position);
+      latitudePosition = position.latitude;
+      longitudePosition = position.longitude;
+      print(latitudePosition);
+      print(longitudePosition);
     }catch(e) {
       print("There was a problem with the internet connection.");
     }
@@ -46,6 +52,8 @@ class _LoadingState extends State<Loading> {
 
       var id = jsonDecode(jsonData)['id'];
       print(id);
+    }else {
+      print(response.statusCode);
     }
   }
 
