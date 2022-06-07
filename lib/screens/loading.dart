@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_weather_app/data/my_location.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -24,17 +24,8 @@ class _LoadingState extends State<Loading> {
   }
 
   void getLocation() async{
-    try {
-      LocationPermission permission = await Geolocator.requestPermission();
-      Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      latitudePosition = position.latitude;
-      longitudePosition = position.longitude;
-      print(latitudePosition);
-      print(longitudePosition);
-    }catch(e) {
-      print("There was a problem with the internet connection.");
-    }
+    MyLocation myLocation = MyLocation();
+    await myLocation.getMyCurrentLocation();
   }
 
   void fetchData() async{
