@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/data/my_location.dart';
+import 'package:flutter_weather_app/data/network.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -20,7 +21,6 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     getLocation();
-    fetchData();
   }
 
   void getLocation() async{
@@ -30,27 +30,28 @@ class _LoadingState extends State<Loading> {
     longitudePosition2 = myLocation.longitudePosition;
     print(latitudePosition2);
     print(longitudePosition2);
+
+    Network network = Network('https://samples.openweathermap.org/data/2.5/weather?'
+        'q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+    var weatherData = await network.getJsonData(); //add await keyword as getJsonData()'s return type is Future<dynamic>
+    print(weatherData);
   }
 
-  void fetchData() async{
-    http.Response response = await http.get(Uri.parse('https://samples.openweathermap.org/data/2.5/weather?'
-        'q=London&appid=b1b15e88fa797225412429c1c50c122a1'));
-    if(response.statusCode == 200) {
-      String jsonData = response.body;
-
-      //jsonDecode() return type is dynamic.. so use var for variable type
-      var myJson = jsonDecode(jsonData)['weather'][0]['description'];
-      print(myJson);
-
-      var windSpeed = jsonDecode(jsonData)['wind']['speed'];
-      print(windSpeed);
-
-      var id = jsonDecode(jsonData)['id'];
-      print(id);
-    }else {
-      print(response.statusCode);
-    }
-  }
+  // void fetchData() async{
+  //
+  //     //jsonDecode() return type is dynamic.. so use var for variable type
+  //     var myJson = parsingData['weather'][0]['description'];
+  //     print(myJson);
+  //
+  //     var windSpeed = parsingData['wind']['speed'];
+  //     print(windSpeed);
+  //
+  //     var id = parsingData['id'];
+  //     print(id);
+  //   }else {
+  //     print(response.statusCode);
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
