@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/data/my_location.dart';
 import 'package:flutter_weather_app/data/network.dart';
+import 'package:flutter_weather_app/screens/weather_screen.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -37,6 +38,10 @@ class _LoadingState extends State<Loading> {
         'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey');
     var weatherData = await network.getJsonData(); //add await keyword as getJsonData()'s return type is Future<dynamic>
     print(weatherData);
+
+    Navigator.push(context, MaterialPageRoute(builder: (context) {
+      return WeatherScreen(parseWeatherData: weatherData,);
+    }));
   }
 
   // void fetchData() async{
