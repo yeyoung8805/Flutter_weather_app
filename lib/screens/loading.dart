@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class Loading extends StatefulWidget {
   //stful 입력하고 자동완성 나오면 엔터
@@ -33,8 +34,19 @@ class _LoadingState extends State<Loading> {
   void fetchData() async{
     http.Response response = await http.get(Uri.parse('https://samples.openweathermap.org/data/2.5/weather?'
         'q=London&appid=b1b15e88fa797225412429c1c50c122a1'));
-    print(response.body);
-    print(response.statusCode);
+    if(response.statusCode == 200) {
+      String jsonData = response.body;
+
+      //jsonDecode() return type is dynamic.. so use var for variable type
+      var myJson = jsonDecode(jsonData)['weather'][0]['description'];
+      print(myJson);
+
+      var windSpeed = jsonDecode(jsonData)['wind']['speed'];
+      print(windSpeed);
+
+      var id = jsonDecode(jsonData)['id'];
+      print(id);
+    }
   }
 
   @override
