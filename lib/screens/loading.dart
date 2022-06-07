@@ -4,6 +4,8 @@ import 'package:flutter_weather_app/data/network.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+const apiKey = '733d955aefd05a030b7a190495f8c99b';
+
 class Loading extends StatefulWidget {
   //stful 입력하고 자동완성 나오면 엔터
   const Loading({Key? key}) : super(key: key);
@@ -31,8 +33,8 @@ class _LoadingState extends State<Loading> {
     print(latitudePosition2);
     print(longitudePosition2);
 
-    Network network = Network('https://samples.openweathermap.org/data/2.5/weather?'
-        'q=London&appid=b1b15e88fa797225412429c1c50c122a1');
+    Network network = Network('https://api.openweathermap.org/data/2.5/weather?'
+        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey');
     var weatherData = await network.getJsonData(); //add await keyword as getJsonData()'s return type is Future<dynamic>
     print(weatherData);
   }
