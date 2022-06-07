@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 class Loading extends StatefulWidget {
   //stful 입력하고 자동완성 나오면 엔터
@@ -31,7 +31,7 @@ class _LoadingState extends State<Loading> {
   }
 
   void fetchData() async{
-    Response response = await get(Uri.parse('https://samples.openweathermap.org/data/2.5/weather?'
+    http.Response response = await http.get(Uri.parse('https://samples.openweathermap.org/data/2.5/weather?'
         'q=London&appid=b1b15e88fa797225412429c1c50c122a1'));
     print(response.body);
     print(response.statusCode);
