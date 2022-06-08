@@ -32,9 +32,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text(''),
+        // title: const Text(''),
         backgroundColor: Colors.transparent,
+        elevation: 0.0, // move transparent appbar to the top (not body)
         leading: IconButton(
           icon: Icon(Icons.near_me),
           onPressed: () {},
