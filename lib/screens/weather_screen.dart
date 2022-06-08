@@ -34,14 +34,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'City name',
+                '$cityName',
                 style: TextStyle(fontSize: 30.0),
               ),
               SizedBox(
                 height: 20.0,
               ),
               Text(
-                'Temperature',
+                '$temperature',
                 style: TextStyle(
                   fontSize: 30.0,
                 ),
