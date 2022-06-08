@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen({this.parseWeatherData}); //{} used because it must be inputted by named argument
