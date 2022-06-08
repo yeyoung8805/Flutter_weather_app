@@ -35,7 +35,7 @@ class _LoadingState extends State<Loading> {
     print(longitudePosition2);
 
     Network network = Network('https://api.openweathermap.org/data/2.5/weather?'
-        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey');
+        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey&units=metric'); //metric means celsius
     var weatherData = await network.getJsonData(); //add await keyword as getJsonData()'s return type is Future<dynamic>
     print(weatherData);
 
@@ -43,22 +43,6 @@ class _LoadingState extends State<Loading> {
       return WeatherScreen(parseWeatherData: weatherData,);
     }));
   }
-
-  // void fetchData() async{
-  //
-  //     //jsonDecode() return type is dynamic.. so use var for variable type
-  //     var myJson = parsingData['weather'][0]['description'];
-  //     print(myJson);
-  //
-  //     var windSpeed = parsingData['wind']['speed'];
-  //     print(windSpeed);
-  //
-  //     var id = parsingData['id'];
-  //     print(id);
-  //   }else {
-  //     print(response.statusCode);
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
