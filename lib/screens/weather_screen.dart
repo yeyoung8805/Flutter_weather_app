@@ -10,7 +10,7 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   String? cityName;
-  double? temperature;
+  int? temperature;
 
   @override
   void initState() {
@@ -19,7 +19,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
   }
 
   void updateData(dynamic weatherData) {
-    temperature = weatherData['main']['temp'];
+    double temperatureDouble = weatherData['main']['temp'];
+    // temperature = temperatureDouble.toInt(); //toInt() 하는 방법 1 : 소수점 이하를 버림
+    temperature = temperatureDouble.round(); //round() 하는 방법 2 : 소수점을 반올림함
     cityName = weatherData['name'];
     print(temperature);
     print(cityName);
