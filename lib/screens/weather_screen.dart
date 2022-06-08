@@ -34,6 +34,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: Icon(Icons.near_me),
           onPressed: () {},
