@@ -32,26 +32,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                '$cityName',
-                style: TextStyle(fontSize: 30.0),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Text(
-                '$temperature',
-                style: TextStyle(
-                  fontSize: 30.0,
-                ),
-              ),
-            ],
-          ),
+      appBar: AppBar(
+        title: const Text(''),
+      ),
+      body: Container(
+        child: Stack( //Stack means piling over layers, and therefore contains multiple items like children
+          children: [
+            Image.asset('image/background.jpg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,),
+          ],
         ),
       ),
     );
