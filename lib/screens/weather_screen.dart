@@ -34,6 +34,18 @@ class _WeatherScreenState extends State<WeatherScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(''),
+        leading: IconButton(
+          icon: Icon(Icons.near_me),
+          onPressed: () {},
+          iconSize: 30.0,
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.location_searching),
+            onPressed: () {},
+            iconSize: 30.0,
+          )
+        ],
       ),
       body: Container(
         child: Stack( //Stack means piling over layers, and therefore contains multiple items like children
