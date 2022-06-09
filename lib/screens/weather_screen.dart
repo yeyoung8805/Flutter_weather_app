@@ -7,8 +7,9 @@ import 'package:flutter_weather_app/model/model.dart';
 
 class WeatherScreen extends StatefulWidget {
   WeatherScreen(
-      {this.parseWeatherData}); //{} used because it must be inputted by named argument
+      {this.parseWeatherData, this.parseAirPollution}); //{} used because it must be inputted by named argument
   final dynamic parseWeatherData;
+  final dynamic parseAirPollution;
 
   @override
   State<WeatherScreen> createState() => _WeatherScreenState();
@@ -20,19 +21,26 @@ class _WeatherScreenState extends State<WeatherScreen> {
   int? temperature;
   Widget? icon;
   String? description;
+  Widget? airIcon;
+  Widget? airState;
   var date = DateTime.now();
 
   @override
   void initState() {
     super.initState();
-    updateData(widget.parseWeatherData);
+    updateData(widget.parseWeatherData, widget.parseAirPollution);
   }
 
-  void updateData(dynamic weatherData) {
+  void updateData(dynamic weatherData, dynamic airData) {
     double temperatureDouble = weatherData['main']['temp'].toDouble();
     int condition = weatherData['weather'][0]['id'];
+    int index = airData['list'][0]['main']['aqi'];
+
     icon = model.getWeatherIcon(condition);
     description = weatherData['weather'][0]['description'];
+
+    airIcon = model.getAirIcon(index);
+    airState = model.getAirCondition(index);
 
     // temperature = temperatureDouble.toInt(); //toInt() 하는 방법 1 : 소수점 이하를 버림
     temperature = temperatureDouble.round(); //round() 하는 방법 2 : 소수점을 반올림함
@@ -188,22 +196,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              Image.asset(
-                                'image/bad.png',
-                                width: 37.0,
-                                height: 35.0,
-                              ),
+                              airIcon!,
                               const SizedBox(
                                 height: 10.0,
                               ),
-                              Text(
-                                '매우 나쁨',
-                                style: GoogleFonts.lato(
-                                  fontSize: 14.0,
-                                  color: Colors.black87,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
+                              airState!,
                             ],
                           ),
                           Column(
