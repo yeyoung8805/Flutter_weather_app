@@ -176,16 +176,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   color: Colors.white,
                                 ),
                               ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
                               Image.asset(
                                 'image/bad.png',
                                 width: 37.0,
                                 height: 35.0,
+                              ),
+                              const SizedBox(
+                                height: 10.0,
                               ),
                               Text(
                                 '매우 나쁨',
                                 style: GoogleFonts.lato(
                                   fontSize: 14.0,
                                   color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],
