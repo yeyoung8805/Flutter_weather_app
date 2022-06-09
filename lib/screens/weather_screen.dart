@@ -72,6 +72,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             Container(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
