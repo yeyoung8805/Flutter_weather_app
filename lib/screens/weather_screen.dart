@@ -23,6 +23,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String? description;
   Widget? airIcon;
   Widget? airState;
+  double? dust; //미세먼지
+  double? microDust; //초미세먼지
   var date = DateTime.now();
 
   @override
@@ -41,6 +43,9 @@ class _WeatherScreenState extends State<WeatherScreen> {
 
     airIcon = model.getAirIcon(index);
     airState = model.getAirCondition(index);
+
+    dust = airData['list'][0]['components']['pm10'];
+    microDust = airData['list'][0]['components']['pm2_5'];
 
     // temperature = temperatureDouble.toInt(); //toInt() 하는 방법 1 : 소수점 이하를 버림
     temperature = temperatureDouble.round(); //round() 하는 방법 2 : 소수점을 반올림함
@@ -216,7 +221,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 height: 10.0,
                               ),
                               Text(
-                                '174.75',
+                                '$dust',
                                 style: GoogleFonts.lato(
                                   fontSize: 24.0,
                                   color: Colors.white,
@@ -248,7 +253,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 height: 10.0,
                               ),
                               Text(
-                                '84.03',
+                                '$microDust',
                                 style: GoogleFonts.lato(
                                   fontSize: 24.0,
                                   color: Colors.white,
