@@ -74,69 +74,72 @@ class _WeatherScreenState extends State<WeatherScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(
-                            height: 150.0,
-                          ),
-                          Text(
-                            'Seoul',
-                            style: GoogleFonts.lato(
-                              fontSize: 35.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 150.0,
                             ),
-                          ),
-                          Row(
-                            children: [
-                              TimerBuilder.periodic(
-                                (const Duration(minutes: 1)),
-                                builder: (context) {
-                                  print('${getSystemTime()}');
-                                  return Text(
-                                    '${getSystemTime()}',
-                                    style: GoogleFonts.lato(
-                                      fontSize: 16.0,
-                                      color: Colors.white,
-                                    ),
-                                  );
-                                },
+                            Text(
+                              'Seoul',
+                              style: GoogleFonts.lato(
+                                fontSize: 35.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                              Text( //show the day of the week
-                                DateFormat(" - EEEE, ").format(date),
-                                style: GoogleFonts.lato(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                              Text(
-                                DateFormat("d MMM, yyy").format(date),
-                                style: GoogleFonts.lato(
-                                  fontSize: 16.0,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Seoul',
-                            style: GoogleFonts.lato(
-                              fontSize: 35.0,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.white,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            Row(
+                              children: [
+                                TimerBuilder.periodic(
+                                  (const Duration(minutes: 1)),
+                                  builder: (context) {
+                                    print('${getSystemTime()}');
+                                    return Text(
+                                      '${getSystemTime()}',
+                                      style: GoogleFonts.lato(
+                                        fontSize: 16.0,
+                                        color: Colors.white,
+                                      ),
+                                    );
+                                  },
+                                ),
+                                Text( //show the day of the week
+                                  DateFormat(" - EEEE, ").format(date),
+                                  style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                Text(
+                                  DateFormat("d MMM, yyy").format(date),
+                                  style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              'Seoul',
+                              style: GoogleFonts.lato(
+                                fontSize: 35.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                   Column(
                     children: [
