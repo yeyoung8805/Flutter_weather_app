@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+import 'package:timer_builder/timer_builder.dart';
 
 class WeatherScreen extends StatefulWidget {
-  WeatherScreen({this.parseWeatherData}); //{} used because it must be inputted by named argument
+  WeatherScreen(
+      {this.parseWeatherData}); //{} used because it must be inputted by named argument
   final dynamic parseWeatherData;
 
   @override
@@ -29,6 +32,11 @@ class _WeatherScreenState extends State<WeatherScreen> {
     print(cityName);
   }
 
+  String getSystemTime() {
+    var now = DateTime.now();
+    return DateFormat("h:mm a").format(now);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,15 +59,19 @@ class _WeatherScreenState extends State<WeatherScreen> {
         ],
       ),
       body: Container(
-        child: Stack( //Stack means piling over layers, and therefore contains multiple items like children
+        child: Stack(
+          //Stack means piling over layers, and therefore contains multiple items like children
           children: [
-            Image.asset('image/background.jpg',
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,),
+            Image.asset(
+              'image/background.jpg',
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+            ),
             Container(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
                     height: 150.0,
@@ -71,6 +83,23 @@ class _WeatherScreenState extends State<WeatherScreen> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                     ),
+                  ),
+                  Row(
+                    children: [
+                      TimerBuilder.periodic(
+                        (Duration(minutes: 1)),
+                        builder: (context){
+                          print('${getSystemTime()}');
+                          return Text(
+                            '${getSystemTime()}',
+                            style: GoogleFonts.lato(
+                              fontSize: 16.0,
+                              color: Colors.white,
+                            ),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
