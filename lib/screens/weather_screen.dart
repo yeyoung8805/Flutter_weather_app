@@ -108,7 +108,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                     );
                                   },
                                 ),
-                                Text( //show the day of the week
+                                Text(
+                                  //show the day of the week
                                   DateFormat(" - EEEE, ").format(date),
                                   style: GoogleFonts.lato(
                                     fontSize: 16.0,
@@ -127,6 +128,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                           ],
                         ),
                         Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               '18\u2103',
@@ -135,6 +137,21 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 fontWeight: FontWeight.w300,
                                 color: Colors.white,
                               ),
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset('svg/climacon-sun.svg'),
+                                const SizedBox(
+                                  width: 10.0,
+                                ),
+                                Text(
+                                  'clear sky',
+                                  style: GoogleFonts.lato(
+                                    fontSize: 16.0,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
