@@ -19,6 +19,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   String? cityName;
   int? temperature;
   Widget? icon;
+  String? description;
   var date = DateTime.now();
 
   @override
@@ -31,6 +32,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
     double temperatureDouble = weatherData['main']['temp'].toDouble();
     int condition = weatherData['weather'][0]['id'];
     icon = model.getWeatherIcon(condition);
+    description = weatherData['weather'][0]['description'];
 
     // temperature = temperatureDouble.toInt(); //toInt() 하는 방법 1 : 소수점 이하를 버림
     temperature = temperatureDouble.round(); //round() 하는 방법 2 : 소수점을 반올림함
@@ -151,7 +153,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                   width: 10.0,
                                 ),
                                 Text(
-                                  'clear sky',
+                                  '$description',
                                   style: GoogleFonts.lato(
                                     fontSize: 16.0,
                                     color: Colors.white,
