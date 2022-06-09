@@ -166,9 +166,29 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         color: Colors.white30,
                       ),
                       Row(
-                        children: const [
-                          Text(
-                            '미세먼지',
+                        children: [
+                          Column(
+                            children: [
+                              Text(
+                                'AQI (대기질 지수)',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Image.asset(
+                                'image/bad.png',
+                                width: 37.0,
+                                height: 35.0,
+                              ),
+                              Text(
+                                '매우 나쁨',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.black87,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
