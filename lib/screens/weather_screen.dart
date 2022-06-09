@@ -166,6 +166,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         color: Colors.white30,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Column(
                             children: [
@@ -192,6 +193,70 @@ class _WeatherScreenState extends State<WeatherScreen> {
                                 style: GoogleFonts.lato(
                                   fontSize: 14.0,
                                   color: Colors.black87,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                '미세먼지',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '174.75',
+                                style: GoogleFonts.lato(
+                                  fontSize: 24.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '㎍/m3',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                '초미세먼지',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '84.03',
+                                style: GoogleFonts.lato(
+                                  fontSize: 24.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 10.0,
+                              ),
+                              Text(
+                                '㎍/m3',
+                                style: GoogleFonts.lato(
+                                  fontSize: 14.0,
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
