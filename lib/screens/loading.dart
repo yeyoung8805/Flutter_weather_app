@@ -35,9 +35,14 @@ class _LoadingState extends State<Loading> {
     print(longitudePosition2);
 
     Network network = Network('https://api.openweathermap.org/data/2.5/weather?'
-        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey&units=metric'); //metric means celsius
+        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey&units=metric',
+        'https://api.openweathermap.org/data/2.5/air_pollution?'
+        'lat=$latitudePosition2&lon=$longitudePosition2&appid=$apiKey'); //metric means celsius
     var weatherData = await network.getJsonData(); //add await keyword as getJsonData()'s return type is Future<dynamic>
     print(weatherData);
+
+    var airData = await network.getAirData();
+    print(airData);
 
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return WeatherScreen(parseWeatherData: weatherData,);
