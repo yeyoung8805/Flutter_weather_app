@@ -16,6 +16,7 @@ class WeatherScreen extends StatefulWidget {
 class _WeatherScreenState extends State<WeatherScreen> {
   String? cityName;
   int? temperature;
+  var date = DateTime.now();
 
   @override
   void initState() {
@@ -88,7 +89,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                     children: [
                       TimerBuilder.periodic(
                         (Duration(minutes: 1)),
-                        builder: (context){
+                        builder: (context) {
                           print('${getSystemTime()}');
                           return Text(
                             '${getSystemTime()}',
@@ -98,6 +99,13 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                           );
                         },
+                      ),
+                      Text( //show the day of the week
+                        DateFormat(" - EEEE").format(date),
+                        style: GoogleFonts.lato(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
                       ),
                     ],
                   ),
