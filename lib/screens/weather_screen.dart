@@ -101,7 +101,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         },
                       ),
                       Text( //show the day of the week
-                        DateFormat(" - EEEE").format(date),
+                        DateFormat(" - EEEE, ").format(date),
+                        style: GoogleFonts.lato(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        DateFormat("d MMM, yyy").format(date),
                         style: GoogleFonts.lato(
                           fontSize: 16.0,
                           color: Colors.white,
