@@ -44,8 +44,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
     airIcon = model.getAirIcon(index);
     airState = model.getAirCondition(index);
 
-    dust = airData['list'][0]['components']['pm10'];
-    microDust = airData['list'][0]['components']['pm2_5'];
+    dust = airData['list'][0]['components']['pm10'].toDouble();
+    microDust = airData['list'][0]['components']['pm2_5'].toDouble();
 
     // temperature = temperatureDouble.toInt(); //toInt() 하는 방법 1 : 소수점 이하를 버림
     temperature = temperatureDouble.round(); //round() 하는 방법 2 : 소수점을 반올림함
